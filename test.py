@@ -1,7 +1,8 @@
 from PIL import Image, ImageDraw
 import PIL
 from tkinter import *
-
+import uuid
+import os
 
 width = 200
 height = 200
@@ -11,7 +12,8 @@ green = (0, 128, 0)
 
 
 def save():
-    filename = "image.png"
+    unique_filename = str(uuid.uuid4())
+    filename = "{0}/{1}.png".format(os.path.abspath("images/tests/"), unique_filename)
     image1.save(filename)
 
 
@@ -47,8 +49,7 @@ cv.bind("<B1-Motion>", paint)
 # draw.line([0, center, width, center], green)
 
 # PIL image can be saved as .png .jpg .gif or .bmp file (among others)
-filename = "my_drawing.png"
-image1.save(filename)
+
 button = Button(text="save", command=save)
 button.pack()
 root.mainloop()
