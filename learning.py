@@ -1,5 +1,4 @@
 import numpy as np
-from image_prep import drawing
 import cv2
 import os
 import csv
