@@ -4,13 +4,26 @@ import os
 import csv
 
 
+def set_rand_biases_and_weights():
+    with open(os.path.abspath("data/biases_first_layer.csv"), "w") as csv_file:
+        biases = np.random.uniform(0, 5, 10000)
+        writer = csv.writer(csv_file, delimiter=',')
+        writer.writerow(biases)
+    with open(os.path.abspath("data/biases_second_layer.csv"), "w") as csv_file:
+        biases = np.random.uniform(0, 5, 100)
+        writer = csv.writer(csv_file, delimiter=',')
+        writer.writerow(biases)
+    with open(os.path.abspath("data/weights_first_layer.csv"), "w") as csv_file:
+        weights_first_layer = np.random.uniform(0, 1, [100, 10000])
+        writer = csv.writer(csv_file, delimiter=',')
+        writer.writerow(weights_first_layer)
+    with open(os.path.abspath("data/weights_second_layer.csv"), "w") as csv_file:
+        weights_second_layer = np.random.uniform(0, 1, [1, 100])
+        writer = csv.writer(csv_file, delimiter=',')
+        writer.writerow(weights_second_layer)
+
+
 '''def learning():
-
-    activations = np.random.uniform(0, 0.01, [10000, 1])
-    weights_first_layer = np.random.uniform(0, 1, [100, 10000])
-    weights_second_layer = np.random.uniform(0, 1, [100, 10000])
-    biases = np.random.uniform(0, 5, [100, ])
-
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
@@ -34,3 +47,6 @@ def create_csv_for_learning(images_dir_name):
 '''Creating csv files from images/learning/l and images/learning/v dirs'''
 #create_csv_for_learning('l')
 #create_csv_for_learning('v')
+
+'''Setting random biases and weights'''
+set_rand_biases_and_weights()

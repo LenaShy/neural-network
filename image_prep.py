@@ -61,6 +61,10 @@ def image_crop(filepath):
     gray = 255*(gray < 128).astype(np.uint8)  # To invert the text to white
     coords = cv2.findNonZero(gray)  # Find all non-zero points
     x, y, w, h = cv2.boundingRect(coords)  # Find minimum spanning bounding box
-    rect = img[y:y+h, x:x+w]  # Crop the image - note we do this on the original image
-    cv2.imwrite(filepath, rect)  # Save the image
+    img = img[y:y+h, x:x+w]  # Crop the image - note we do this on the original image
+    img = cv2.resize(img, dsize=(10, 10), interpolation=cv2.INTER_CUBIC)
+    cv2.imwrite(filepath, img)  # Save the image
     return img
+
+
+drawing()
