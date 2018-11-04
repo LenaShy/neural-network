@@ -56,15 +56,12 @@ def drawing():
 
 
 def image_crop(filepath):
-    img = cv2.imread(filepath)  # Read in the image and convert to grayscale
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    gray = 255*(gray < 128).astype(np.uint8)  # To invert the text to white
-    coords = cv2.findNonZero(gray)  # Find all non-zero points
+    img = cv2.imread(filepath, 0)  # Read in the image
+    img = 255*(img < 128).astype(np.uint8)  # To invert the text to white
+    coords = cv2.findNonZero(img)  # Find all non-zero points
     x, y, w, h = cv2.boundingRect(coords)  # Find minimum spanning bounding box
     img = img[y:y+h, x:x+w]  # Crop the image - note we do this on the original image
     img = cv2.resize(img, dsize=(10, 10), interpolation=cv2.INTER_CUBIC)
     cv2.imwrite(filepath, img)  # Save the image
     return img
 
-
-drawing()

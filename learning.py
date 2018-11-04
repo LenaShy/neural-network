@@ -6,21 +6,13 @@ import csv
 
 def set_rand_biases_and_weights():
     with open(os.path.abspath("data/biases_first_layer.csv"), "w") as csv_file:
-        biases = np.random.uniform(0, 5, 10000)
-        writer = csv.writer(csv_file, delimiter=',')
-        writer.writerow(biases)
-    with open(os.path.abspath("data/biases_second_layer.csv"), "w") as csv_file:
-        biases = np.random.uniform(0, 5, 100)
+        biases = np.random.uniform(0, 5, 1)
         writer = csv.writer(csv_file, delimiter=',')
         writer.writerow(biases)
     with open(os.path.abspath("data/weights_first_layer.csv"), "w") as csv_file:
-        weights_first_layer = np.random.uniform(0, 1, [100, 10000])
+        weights_first_layer = np.random.uniform(0, 1, 100)
         writer = csv.writer(csv_file, delimiter=',')
         writer.writerow(weights_first_layer)
-    with open(os.path.abspath("data/weights_second_layer.csv"), "w") as csv_file:
-        weights_second_layer = np.random.uniform(0, 1, [1, 100])
-        writer = csv.writer(csv_file, delimiter=',')
-        writer.writerow(weights_second_layer)
 
 
 '''def learning():

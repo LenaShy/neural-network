@@ -1,16 +1,12 @@
 import numpy as np
 from image_prep import drawing
-import pandas as pd
 import os
-import cv2
 
-filepath = drawing()
-im = cv2.imread(filepath, 0)
+im = drawing()
 activations = np.asarray(im).reshape(-1)
-weights_first_layer = pd.read_csv(os.path.abspath("data/weights_first_layer.csv"))
-weights_second_layer = pd.read_csv(os.path.abspath("data/weights_second_layer.csv"))
-biases_first_layer = pd.read_csv(os.path.abspath("data/biases_first_layer.csv"))
-biases_second_layer = pd.read_csv(os.path.abspath("data/biases_second_layer.csv"))
+weights_first_layer = np.genfromtxt(os.path.abspath("data/weights_first_layer.csv"), delimiter=',')
+biases_first_layer = np.genfromtxt(os.path.abspath("data/biases_first_layer.csv"), delimiter=',')
+
 
 
 def sigmoid(x):
@@ -22,5 +18,4 @@ def activations_value(biases, weights, x):
     return a
 
 
-first_layer = activations_value(biases_first_layer, weights_first_layer, activations)
-print(activations_value(biases_second_layer, weights_second_layer, first_layer))
+print(activations_value(biases_first_layer, weights_first_layer, activations))
