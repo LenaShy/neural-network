@@ -8,8 +8,8 @@ import numpy as np
 
 
 def drawing():
-    width = 100
-    height = 100
+    width = 500
+    height = 500
     center = height//2
     white = (255, 255, 255)
     green = (0, 128, 0)
@@ -64,4 +64,3 @@ def image_crop(filepath):
     img = cv2.resize(img, dsize=(10, 10), interpolation=cv2.INTER_CUBIC)
     cv2.imwrite(filepath, img)  # Save the image
     return img
-

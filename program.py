@@ -14,6 +14,7 @@ def sigmoid(x):
 
 
 def activations_value(biases, weights, x):
+    print('argument: ', weights.dot(x) + biases)
     a = sigmoid(weights.dot(x) + biases)
     return a
 
